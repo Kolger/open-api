@@ -1,0 +1,31 @@
+<div id="vk_api_transport"></div>
+<div id="vk_login" onclick="doLogin()"></div>
+<script src="http://vkontakte.ru/js/api/openapi.js" type="text/javascript" charset="windows-1251"></script>
+<script type="text/javascript">
+	window.vkAsyncInit = function() {
+		VK.init({
+			apiId: 1868779,
+			nameTransportPath: '/xd_receiver.htm'
+		});
+
+		VK.UI.button('vk_login');
+	};
+
+	(function() {
+		var el = document.createElement("script");
+		el.type = "text/javascript";
+		el.charset = "windows-1251";
+		el.src = "http://vkontakte.ru/js/api/openapi.js";
+		el.async = true;
+		document.getElementById("vk_api_transport").appendChild(el);
+	}());
+
+function doLogin() {
+  VK.Auth.login(afterLogin);
+}
+
+function afterLogin (response) {
+	window.location = '/';
+}
+
+</script>
